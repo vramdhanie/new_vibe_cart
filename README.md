@@ -1,7 +1,7 @@
 # New Vibe Cart
 
-![GitHub](https://img.shields.io/github/license/vramdhanie/xtracart)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/vramdhanie/xtracart)
+![GitHub](https://img.shields.io/github/license/vramdhanie/new_vibe_cart)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/vramdhanie/new_vibe_cart)
 
 A retail shopping platform for non-grocery items
 
