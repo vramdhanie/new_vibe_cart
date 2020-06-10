@@ -1,10 +1,20 @@
 import React from "react";
+import { Flex } from "@chakra-ui/core";
 
 const Footer = () => {
   return (
-    <footer className="text-center p-2 text-gray-400 text-sm border-t  border-gray-300">
-      &copy; {new Date().getFullYear()} xtra cart limited
-    </footer>
+    <Flex
+      as="footer"
+      color="primary.700"
+      justifyContent="center"
+      py={2}
+      borderTop="solid"
+      borderTopColor="secondary.400"
+      borderTopWidth={1}
+      fontSize="sm"
+    >
+      &copy; {new Date().getFullYear()} New Vibe Limited
+    </Flex>
   );
 };
 

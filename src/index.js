@@ -4,10 +4,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./assets/main.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { ThemeProvider, CSSReset } from "@chakra-ui/core";
+import vibeTheme from "./assets/theme";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={vibeTheme}>
+      <CSSReset />
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
