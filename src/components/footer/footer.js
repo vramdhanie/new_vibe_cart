@@ -5,13 +5,14 @@ const Footer = () => {
   return (
     <Flex
       as="footer"
-      color="primary.700"
+      color="primary.100"
       justifyContent="center"
       py={2}
       borderTop="solid"
-      borderTopColor="secondary.400"
+      borderTopColor="primary.100"
       borderTopWidth={1}
       fontSize="sm"
+      bg="primary.800"
     >
       &copy; {new Date().getFullYear()} New Vibe Limited
     </Flex>

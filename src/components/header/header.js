@@ -4,6 +4,7 @@ import { MdShoppingCart, MdHome } from "react-icons/md";
 import logo from "../../images/logo_full.png";
 import { FirebaseContext } from "../../firebase";
 import InventoryContext from "../../data/inventoryContext";
+import { Flex, Tag, Link, TagLabel, Divider } from "@chakra-ui/core";
 
 const Header = () => {
   const { user, firebase } = useContext(FirebaseContext);
@@ -12,28 +13,46 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <header className="flex justify-between p-1 border-b">
+    <Flex
+      as="header"
+      justify="space-between"
+      p={1}
+      borderBottom="solid"
+      borderBottomColor="primary.50"
+      borderBottomWidth={1}
+      bg="secondary.600"
+      bgImage="linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(18,102,218,1) 35%, rgba(0,11,30,1) 100%)"
+    >
       <div className="flex items-center flex-1">
         <NavLink to="/" className="p-1">
-          <img src={logo} className="w-32" alt="xtracart logo" />
+          <img src={logo} className="w-32" alt="new vibe logo" />
         </NavLink>
       </div>
       <div className="flex items-center">
-        <NavLink
-          to="/cart"
-          className="p-1 flex items-center hover:text-teal-500 relative text-blue-800"
-        >
-          <MdShoppingCart />
-          Cart
-          <div className="ml-1 p-0 text-xs text-white bg-blue-600 rounded-full w-4 h-4 text-center">
-            {cart.length}
-          </div>
-        </NavLink>
-        <div className="px-1">|</div>
+        <Link as={NavLink} to="/cart" textDecoration="none">
+          <Tag
+            bg="none"
+            color="primary.100"
+            _hover={{ color: "primary.300", textDecoration: "none" }}
+          >
+            <MdShoppingCart />
+            <TagLabel mx={2}>Cart</TagLabel>
+            <Tag
+              size="sm"
+              rounded="full"
+              variant="solid"
+              variantColor="primary"
+              textDecoration="none"
+            >
+              {cart.length}
+            </Tag>
+          </Tag>
+        </Link>
+        <Divider px={1} orientation="vertical" borderColor="primary.100" />
         {user ? (
           <>
             <div>{user.displayName}</div>
-            <div className="px-1">|</div>
+            <Divider px={1} orientation="vertical" borderColor="primary.100" />
             <div
               className="cursor-pointer hover:text-teal-500 text-blue-800"
               onClick={() => {
@@ -45,19 +64,22 @@ const Header = () => {
             </div>
           </>
         ) : !location.pathname.startsWith("/login") ? (
-          <NavLink
+          <Link
+            as={NavLink}
             to={`/login${location.pathname}`}
-            className="p-1 hover:text-teal-500 text-blue-800"
+            p={2}
+            color="primary.100"
+            _hover={{ color: "primary.300" }}
           >
             Login
-          </NavLink>
+          </Link>
         ) : (
           <NavLink to="/" className="p-1 hover:text-teal-500 text-blue-800">
             <MdHome />
           </NavLink>
         )}
       </div>
-    </header>
+    </Flex>
   );
 };
 
