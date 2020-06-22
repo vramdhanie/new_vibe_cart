@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { withRouter, NavLink, useHistory, useLocation } from "react-router-dom";
 import { MdShoppingCart, MdHome } from "react-icons/md";
-import logo from "../../images/logo_full.png";
+import logo from "../../images/logo.png";
 import { FirebaseContext } from "../../firebase";
 import InventoryContext from "../../data/inventoryContext";
 import { Flex, Tag, Link, TagLabel, Divider } from "@chakra-ui/core";
+import SearchForm from "../search/searchForm";
 
 const Header = () => {
   const { user, firebase } = useContext(FirebaseContext);
@@ -20,14 +21,14 @@ const Header = () => {
       borderBottom="solid"
       borderBottomColor="primary.50"
       borderBottomWidth={1}
-      bg="secondary.600"
-      bgImage="linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(18,102,218,1) 35%, rgba(0,11,30,1) 100%)"
+      bg="primary.500"
     >
-      <div className="flex items-center flex-1">
+      <div className="flex items-center">
         <NavLink to="/" className="p-1">
           <img src={logo} className="w-32" alt="new vibe logo" />
         </NavLink>
       </div>
+      <SearchForm />
       <div className="flex items-center">
         <Link as={NavLink} to="/cart" textDecoration="none">
           <Tag
@@ -41,14 +42,19 @@ const Header = () => {
               size="sm"
               rounded="full"
               variant="solid"
-              variantColor="primary"
+              variantColor="secondary"
               textDecoration="none"
             >
               {cart.length}
             </Tag>
           </Tag>
         </Link>
-        <Divider px={1} orientation="vertical" borderColor="primary.100" />
+        <Divider
+          px={1}
+          orientation="vertical"
+          borderColor="black"
+          borderWidth={1}
+        />
         {user ? (
           <>
             <div>{user.displayName}</div>
