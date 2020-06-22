@@ -35,6 +35,8 @@ const Header = () => {
             bg="none"
             color="primary.100"
             _hover={{ color: "primary.300", textDecoration: "none" }}
+            position="relative"
+            outline="none"
           >
             <MdShoppingCart />
             <TagLabel mx={2}>Cart</TagLabel>
@@ -44,6 +46,9 @@ const Header = () => {
               variant="solid"
               variantColor="secondary"
               textDecoration="none"
+              position="absolute"
+              top="-10px"
+              right="-2px"
             >
               {cart.length}
             </Tag>
