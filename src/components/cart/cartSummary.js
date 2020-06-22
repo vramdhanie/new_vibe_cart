@@ -66,7 +66,7 @@ const CartSummary = () => {
           </div>
           <div className="text-yellow-800 text-md p-1">
             You do not have any items in your cart as yet. Browse or search
-            below to start your shopping list!
+            below to start shopping!
           </div>
         </>
       )}
