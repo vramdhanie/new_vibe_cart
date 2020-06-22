@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { withRouter, NavLink, useHistory, useLocation } from "react-router-dom";
 import { MdShoppingCart, MdHome } from "react-icons/md";
-import logo from "../../images/logo.png";
+import logo from "../../images/logo_white.png";
 import { FirebaseContext } from "../../firebase";
 import InventoryContext from "../../data/inventoryContext";
 import { Flex, Tag, Link, TagLabel, Divider } from "@chakra-ui/core";
@@ -21,7 +21,7 @@ const Header = () => {
       borderBottom="solid"
       borderBottomColor="primary.50"
       borderBottomWidth={1}
-      bg="primary.500"
+      bg="primary.800"
     >
       <div className="flex items-center">
         <NavLink to="/" className="p-1">
