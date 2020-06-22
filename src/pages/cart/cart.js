@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import InventoryContext from "../../data/inventoryContext";
 import CartProduct from "../../components/product/cartProduct";
 import { Link } from "react-router-dom";
+import { PseudoBox } from "@chakra-ui/core";
 
 const Cart = () => {
   const formatter = new Intl.NumberFormat("en-US", {
@@ -58,12 +59,32 @@ const Cart = () => {
               Your cart is empty
             </div>
             <div className="p-8">
-              <Link
+              <PseudoBox
+                as={Link}
                 to="/"
-                className="mr-1 flex-shrink-0 border hover:border-yellow-700 bg-yellow-500 hover:bg-yellow-600 text-black  border-yellow-800 text-sm border-4 hover:text-gray-800 py-1 px-2 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+                transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
+                border="1px"
+                px="8px"
+                py="4px"
+                rounded="4px"
+                fontSize="14px"
+                fontWeight="normal"
+                bg="yellow.400"
+                borderColor="yellow.700"
+                color="black"
+                _hover={{ bg: "yellow.500", borderColor: "yellow.700" }}
+                _active={{
+                  bg: "primary.200",
+                  transform: "scale(0.98)",
+                  borderColor: "primary.400",
+                }}
+                _focus={{
+                  boxShadow:
+                    "0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15)",
+                }}
               >
                 Shop now!
-              </Link>
+              </PseudoBox>
             </div>
           </div>
         )}
