@@ -35,3 +35,15 @@ steps:
         "--only",
         "hosting:new-vibe",
       ]
+  - name: node
+    entrypoint: "./node_modules/.bin/firebase"
+    args:
+      [
+        "deploy",
+        "--project",
+        "$PROJECT_ID",
+        "--token",
+        "$_TOKEN",
+        "--only",
+        "functions",
+      ]
