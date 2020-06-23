@@ -4,7 +4,7 @@ import { MdShoppingCart, MdHome } from "react-icons/md";
 import logo from "../../images/logo_white.png";
 import { FirebaseContext } from "../../firebase";
 import InventoryContext from "../../data/inventoryContext";
-import { Flex, Tag, Link, TagLabel, Divider } from "@chakra-ui/core";
+import { Flex, Tag, Link, TagLabel, Divider, Grid, Box } from "@chakra-ui/core";
 import SearchForm from "../search/searchForm";
 import Menu from "./menu";
 
@@ -15,7 +15,7 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <Flex
+    <Grid
       as="header"
       justify="space-between"
       p={1}
@@ -24,15 +24,20 @@ const Header = () => {
       borderBottomWidth={1}
       bg="primary.800"
       alignItems="center"
+      templateAreas={{
+        base: `"Menu Logo Cart" "Search Search Search"`,
+        md: `"Menu Logo Search Cart"`,
+      }}
+      templateColumns={{ md: "auto auto 1fr auto" }}
     >
       <Menu />
-      <div className="flex items-center">
+      <Box className="flex items-center" gridArea="Logo">
         <NavLink to="/" className="p-1">
           <img src={logo} className="w-32" alt="new vibe logo" />
         </NavLink>
-      </div>
+      </Box>
       <SearchForm />
-      <div className="flex items-center">
+      <Flex gridArea="Cart" alignItems="center" justifyContent="flex-end">
         <Link
           as={NavLink}
           to="/cart"
@@ -98,8 +103,8 @@ const Header = () => {
             <MdHome />
           </NavLink>
         )}
-      </div>
-    </Flex>
+      </Flex>
+    </Grid>
   );
 };
 

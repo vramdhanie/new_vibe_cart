@@ -9,6 +9,7 @@ import {
   DrawerHeader,
   DrawerFooter,
   useDisclosure,
+  Box,
 } from "@chakra-ui/core";
 import { MdMenu } from "react-icons/md";
 
@@ -16,7 +17,7 @@ const Menu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <>
+    <Box gridArea="Menu">
       <IconButton
         variantColor="blue"
         onClick={onOpen}
@@ -49,7 +50,7 @@ const Menu = () => {
           <DrawerFooter borderTopWidth="1px">The footer</DrawerFooter>
         </DrawerContent>
       </Drawer>
-    </>
+    </Box>
   );
 };
 

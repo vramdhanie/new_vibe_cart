@@ -10,7 +10,12 @@ import {
 
 const SearchForm = () => {
   return (
-    <Flex flex={1} alignItems="center" justifyContent="center">
+    <Flex
+      flex={1}
+      alignItems="center"
+      justifyContent="center"
+      gridArea="Search"
+    >
       <form className="flex-1">
         <FormControl width="full">
           <InputGroup>
