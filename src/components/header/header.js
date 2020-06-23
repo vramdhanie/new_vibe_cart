@@ -6,6 +6,7 @@ import { FirebaseContext } from "../../firebase";
 import InventoryContext from "../../data/inventoryContext";
 import { Flex, Tag, Link, TagLabel, Divider } from "@chakra-ui/core";
 import SearchForm from "../search/searchForm";
+import Menu from "./menu";
 
 const Header = () => {
   const { user, firebase } = useContext(FirebaseContext);
@@ -22,7 +23,9 @@ const Header = () => {
       borderBottomColor="primary.50"
       borderBottomWidth={1}
       bg="primary.800"
+      alignItems="center"
     >
+      <Menu />
       <div className="flex items-center">
         <NavLink to="/" className="p-1">
           <img src={logo} className="w-32" alt="new vibe logo" />
@@ -30,7 +33,13 @@ const Header = () => {
       </div>
       <SearchForm />
       <div className="flex items-center">
-        <Link as={NavLink} to="/cart" textDecoration="none">
+        <Link
+          as={NavLink}
+          to="/cart"
+          textDecoration="none"
+          _focus={{ outline: "none" }}
+          _active={{ boxShadow: "0 0 2px 3px rgba(255, 255, 255, 0.4)" }}
+        >
           <Tag
             bg="none"
             color="primary.100"
