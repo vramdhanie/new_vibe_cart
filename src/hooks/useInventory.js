@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import { COLLECTION_NAMES } from "../utilities/constants";
 
 function useInventory(db) {
   const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
-    const prodRef = db.collection("products");
+    const prodRef = db.collection(COLLECTION_NAMES.PRODUCTS);
     prodRef
       .limit(10)
       .get()
