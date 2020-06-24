@@ -33,7 +33,7 @@ steps:
         "--token",
         "$_TOKEN",
         "--only",
-        "hosting:new-vibe-admin",
+        "hosting:public",
       ]
   - name: node
     entrypoint: "./node_modules/.bin/firebase"
