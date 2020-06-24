@@ -24,6 +24,21 @@ steps:
         "REACT_APP_MEASUREMENT_ID=$_MEASUREMENT_ID",
       ]
   - name: node
+      entrypoint: "./node_modules/.bin/firebase"
+      args:
+        [
+          "target:apply",
+          "--project",
+          "$PROJECT_ID",
+          "--token",
+          "$_TOKEN",
+          
+          "hosting",
+          "public",
+          "new-vibe"
+
+        ]    
+  - name: node
     entrypoint: "./node_modules/.bin/firebase"
     args:
       [
