@@ -48,11 +48,11 @@ steps:
         "--only",
         "hosting:public",
       ]
-  - name: node
+  - name: node:$_NODE_VERSION
     entrypoint: yarn
     args: ["install"]
     dir: "functions"
-  - name: node
+  - name: node:$_NODE_VERSION
     entrypoint: "./node_modules/.bin/firebase"
     args:
       [
