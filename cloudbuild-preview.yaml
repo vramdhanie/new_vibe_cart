@@ -13,7 +13,7 @@ steps:
         "REACT_APP_GOOGLE_ANALYTICS_KEY=$_GOOGLE_ANALYTICS_KEY",
         "REACT_APP_BUILD=$BUILD_ID",
         "REACT_APP_VERSION=0.1.0",
-        "REACT_APP_NAME=xtracart",
+        "REACT_APP_NAME=newvibe",
         "REACT_APP_API_KEY=$_API_KEY",
         "REACT_APP_AUTH_DOMAIN=$_AUTH_DOMAIN",
         "REACT_APP_DATABASE_URL=$_DATABASE_URL",
@@ -27,11 +27,40 @@ steps:
     entrypoint: "./node_modules/.bin/firebase"
     args:
       [
+        "target:apply",
+        "--project",
+        "$PROJECT_ID",
+        "--token",
+        "$_TOKEN",
+        "hosting",
+        "preview",
+        "new-vibe-preview",
+      ]
+  - name: node
+    entrypoint: "./node_modules/.bin/firebase"
+    args:
+      [
         "deploy",
         "--project",
         "$PROJECT_ID",
         "--token",
         "$_TOKEN",
         "--only",
-        "hosting:xtracart-preview",
+        "hosting:preview",
+      ]
+  - name: node:$_NODE_VERSION
+    entrypoint: yarn
+    args: ["install"]
+    dir: "functions"
+  - name: node:$_NODE_VERSION
+    entrypoint: "./node_modules/.bin/firebase"
+    args:
+      [
+        "deploy",
+        "--project",
+        "$PROJECT_ID",
+        "--token",
+        "$_TOKEN",
+        "--only",
+        "functions",
       ]
