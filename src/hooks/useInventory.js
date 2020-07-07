@@ -7,6 +7,7 @@ function useInventory(db) {
   useEffect(() => {
     const prodRef = db.collection(COLLECTION_NAMES.PRODUCTS);
     prodRef
+      .where("special", "==", true)
       .limit(10)
       .get()
       .then((snapshot) =>

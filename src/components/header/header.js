@@ -4,7 +4,17 @@ import { MdShoppingCart, MdHome } from "react-icons/md";
 import logo from "../../images/logo_white.png";
 import { FirebaseContext } from "../../firebase";
 import InventoryContext from "../../data/inventoryContext";
-import { Flex, Tag, Link, TagLabel, Divider, Grid, Box } from "@chakra-ui/core";
+import {
+  Flex,
+  Tag,
+  Link,
+  TagLabel,
+  Divider,
+  Grid,
+  Box,
+  Text,
+  Button,
+} from "@chakra-ui/core";
 import SearchForm from "../search/searchForm";
 import Menu from "./menu";
 
@@ -76,17 +86,21 @@ const Header = () => {
         />
         {user ? (
           <>
-            <div>{user.displayName}</div>
+            <Text color="secondary.300">{user.displayName}</Text>
             <Divider px={1} orientation="vertical" borderColor="primary.100" />
-            <div
-              className="cursor-pointer hover:text-teal-500 text-blue-800"
+            <Button
+              variant="link"
+              color="secondary.300"
+              _hover={{
+                color: "primary.200",
+              }}
               onClick={() => {
                 firebase.logout();
                 history.push("/");
               }}
             >
               logout
-            </div>
+            </Button>
           </>
         ) : !location.pathname.startsWith("/login") ? (
           <Link
