@@ -5,6 +5,7 @@ import Shop from "./pages/shop/shop";
 import Cart from "./pages/cart/cart";
 import Checkout from "./pages/checkout/checkout";
 import Product from "./pages/product/product";
+import Category from "./pages/category/category";
 import ForgotPassword from "./pages/login/forgotPassword";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
@@ -35,6 +36,7 @@ function App() {
               <Route path="/checkout" component={Checkout} />
               <Route path="/cart" component={Cart} />
               <Route path="/product/:id" component={Product} />
+              <Route path="/category/:id" component={Category} />
               <Route path="/admin" component={Admin} />
             </main>
             <Footer />
