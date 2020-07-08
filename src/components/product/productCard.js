@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 import InventoryContext from "../../data/inventoryContext";
+import { useToast } from "@chakra-ui/core";
 
 const ProductCard = ({ name, description, image, price, id }) => {
+  const toast = useToast();
+
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -11,7 +14,26 @@ const ProductCard = ({ name, description, image, price, id }) => {
 
   const handleAddToCart = () => {
     const item = { id, name, description, image, price };
-    addItem(item);
+    addItem(item)
+      .then(() => {
+        toast({
+          title: "Yay!",
+          description: `1 of ${name} added to cart. (${quantity + 1} in cart)`,
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+      })
+      .catch((error) => {
+        toast({
+          title: "Sorry",
+          description:
+            "We were not able to add the item to the cart. Please try again.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      });
   };
 
   const quantity = quantityOfItemInCart(id);

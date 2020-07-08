@@ -148,7 +148,8 @@ function useCart(db) {
     }
     if (user) {
       if (cart_id) {
-        db.collection(CARTS)
+        return db
+          .collection(CARTS)
           .doc(cart_id)
           .set(
             {
@@ -161,7 +162,8 @@ function useCart(db) {
             setCart(items);
           });
       } else {
-        db.collection(CARTS)
+        return db
+          .collection(CARTS)
           .add({
             user: user.uid,
             items,
@@ -173,7 +175,8 @@ function useCart(db) {
       }
     } else {
       if (cart_id) {
-        db.collection(GUEST_CARTS)
+        return db
+          .collection(GUEST_CARTS)
           .doc(cart_id)
           .set(
             {
@@ -187,7 +190,8 @@ function useCart(db) {
             setCart(items);
           });
       } else {
-        db.collection(GUEST_CARTS)
+        return db
+          .collection(GUEST_CARTS)
           .add({
             items,
           })

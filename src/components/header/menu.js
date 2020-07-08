@@ -10,10 +10,13 @@ import {
   DrawerFooter,
   useDisclosure,
   Box,
+  Button,
+  Stack,
 } from "@chakra-ui/core";
 import { MdMenu } from "react-icons/md";
 import FirebaseContext from "../../firebase/context";
 import { COLLECTION_NAMES } from "../../utilities/constants";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -32,6 +35,7 @@ const Menu = () => {
     });
   }, []);
 
+  console.log(categories);
   return (
     <Box gridArea="Menu">
       <IconButton
@@ -59,9 +63,20 @@ const Menu = () => {
             color="secondary.50"
           />
           <DrawerBody>
-            {categories.length
-              ? categories.map((cat) => <div>{cat.id}</div>)
-              : "Loading..."}
+            <Stack alignItems="start">
+              {categories.length
+                ? categories.map((cat) => (
+                    <Button
+                      as={Link}
+                      to={`/category/${cat.id}`}
+                      key={cat.id}
+                      variant="link"
+                    >
+                      {cat.id.charAt(0).toUpperCase() + cat.id.slice(1)}
+                    </Button>
+                  ))
+                : "Loading..."}
+            </Stack>
           </DrawerBody>
           <DrawerFooter borderTopWidth="1px">The footer</DrawerFooter>
         </DrawerContent>
