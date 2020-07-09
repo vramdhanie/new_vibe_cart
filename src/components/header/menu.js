@@ -17,6 +17,7 @@ import { MdMenu } from "react-icons/md";
 import FirebaseContext from "../../firebase/context";
 import { COLLECTION_NAMES } from "../../utilities/constants";
 import { Link } from "react-router-dom";
+import { titleCase } from "../../utilities/textFunctions";
 
 const Menu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -71,7 +72,7 @@ const Menu = () => {
                       key={cat.id}
                       variant="link"
                     >
-                      {cat.id.charAt(0).toUpperCase() + cat.id.slice(1)}
+                      {titleCase(cat.id)}
                     </Button>
                   ))
                 : "Loading..."}

@@ -84,7 +84,7 @@ const Login = () => {
                   <input
                     disabled={true}
                     value="1 (868)"
-                    className="flex-grow-0 flex-shrink-0 w-16 appearance-none block bg-gray-100 text-gray-500 border border-gray-200 rounded-l py-3 px-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 w-8"
+                    className="flex-grow-0 flex-shrink-0 w-16 appearance-none block bg-gray-100 text-gray-500 border border-gray-200 rounded-l py-3 px-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   />
                   <input
                     className={classNames(

@@ -1,8 +1,17 @@
 import React, { useContext } from "react";
 import InventoryContext from "../../data/inventoryContext";
-import { useToast } from "@chakra-ui/core";
+import { useToast, Text, Heading } from "@chakra-ui/core";
+import { titleCase } from "../../utilities/textFunctions";
 
-const ProductCard = ({ name, description, image, price, id }) => {
+const ProductCard = ({
+  name,
+  description,
+  image,
+  price,
+  id,
+  main_category,
+  sub_category,
+}) => {
   const toast = useToast();
 
   const formatter = new Intl.NumberFormat("en-US", {
@@ -50,8 +59,16 @@ const ProductCard = ({ name, description, image, price, id }) => {
           <img src={image} alt={description} className="w-9/12 my-0 mx-auto" />
         </div>
         <div className="px-2 py-4 flex-1 md:px-6">
-          <div className="font-bold text-xl mb-2">{name}</div>
-          <p className="text-gray-700 text-base">{description}</p>
+          <Heading as="h5" mb={2} color="primary.700" fontSize="lg">
+            {name}
+          </Heading>
+          <Text fontSize="xs" color="primary.300">
+            {titleCase(main_category.id)}
+            {sub_category ? `/${titleCase(sub_category.id)}` : ""}
+          </Text>
+          <Text color="primary.700" fontSize="sm">
+            {description}
+          </Text>
         </div>
       </div>
       <div className="px-4 py-4 flex justify-between items-center">
