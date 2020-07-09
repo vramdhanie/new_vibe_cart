@@ -35,7 +35,6 @@ const Menu = () => {
     });
   }, []);
 
-  console.log(categories);
   return (
     <Box gridArea="Menu">
       <IconButton
