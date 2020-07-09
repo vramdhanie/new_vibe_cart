@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import InventoryContext from "../../data/inventoryContext";
-import { useToast, Text, Heading } from "@chakra-ui/core";
+import { useToast, Text, Heading, Box, Flex } from "@chakra-ui/core";
 import { titleCase } from "../../utilities/textFunctions";
 
 const ProductCard = ({
@@ -26,7 +26,7 @@ const ProductCard = ({
     addItem(item)
       .then(() => {
         toast({
-          title: "Yay!",
+          title: !!quantity ? "One more added!" : "One added!",
           description: `1 of ${name} added to cart. (${quantity + 1} in cart)`,
           status: "success",
           duration: 5000,
@@ -48,11 +48,30 @@ const ProductCard = ({
   const quantity = quantityOfItemInCart(id);
 
   return (
-    <div className="max-w-xs w-full rounded overflow-hidden  mx-auto flex flex-col shadow-lg">
+    <Flex
+      maxWidth="xs"
+      width="100%"
+      borderRadius="4px"
+      overflow="hidden"
+      mx="auto"
+      flexDirection="column"
+      boxShadow="0 1px 3px 0 rgba(0,0,0,0.2)"
+      position="relative"
+    >
       {!!quantity && (
-        <div className="bg-gray-300 self-end p-1 text-gray-700 rounded-bl">
+        <Box
+          bg="gray.300"
+          p={1}
+          color="primary.300"
+          borderTopRightRadius="4px"
+          borderBottomLeftRadius="4px"
+          position="absolute"
+          top={0}
+          fontSize="xs"
+          right={0}
+        >
           {quantity} in cart
-        </div>
+        </Box>
       )}
       <div className="flex md:flex-col flex-1">
         <div className="flex-1 py-4">
@@ -80,10 +99,10 @@ const ProductCard = ({
           type="button"
           onClick={handleAddToCart}
         >
-          Add to cart
+          {!!quantity ? "Add one more" : "Add to cart"}
         </button>
       </div>
-    </div>
+    </Flex>
   );
 };
 
