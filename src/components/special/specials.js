@@ -1,11 +1,29 @@
-import React, { useContext } from "react";
-import InventoryContext from "../../data/inventoryContext";
-
+import React, { useContext, useEffect, useState } from "react";
+import FirebaseContext from "../../firebase/context";
+import { COLLECTION_NAMES } from "../../utilities/constants";
 import ProductCard from "../../components/product/productCard";
 import { Box, Heading } from "@chakra-ui/core";
 
 const Specials = () => {
-  const { inventory } = useContext(InventoryContext);
+  const [inventory, setInventory] = useState([]);
+  const { firebase } = useContext(FirebaseContext);
+
+  useEffect(() => {
+    const prodRef = firebase.db.collection(COLLECTION_NAMES.PRODUCTS);
+    prodRef
+      .where("special", "==", true)
+      .limit(10)
+      .get()
+      .then((snapshot) =>
+        setInventory(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+        )
+      );
+  }, [firebase]);
+
   return (
     <Box width="92%" p={2} mx="auto">
       <Heading as="h3" color="primary.600">
